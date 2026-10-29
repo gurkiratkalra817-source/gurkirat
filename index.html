@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduManage | Student Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a href="#" class="brand" onclick="navigate('dashboard');return false">
+        <span class="brand-icon"><i data-lucide="graduation-cap"></i></span>
+        <span>Edu<span class="brand-light">Manage</span><small>STUDENT PORTAL</small></span>
+      </a>
+
+      <div class="nav-label">MAIN MENU</div>
+      <nav id="navigation">
+        <button class="nav-link active" data-page="dashboard"><i data-lucide="layout-dashboard"></i> Dashboard</button>
+        <button class="nav-link" data-page="students"><i data-lucide="users"></i> Students</button>
+        <button class="nav-link" data-page="teachers"><i data-lucide="user-round"></i> Teachers</button>
+        <button class="nav-link" data-page="fees"><i data-lucide="wallet"></i> Fee Management</button>
+        <button class="nav-link" data-page="attendance"><i data-lucide="calendar-check"></i> Attendance</button>
+        <button class="nav-link" data-page="exams"><i data-lucide="clipboard-list"></i> Exams & Results</button>
+        <button class="nav-link" data-page="reports"><i data-lucide="chart-no-axes-combined"></i> Reports</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="school-card">
+          <div class="school-avatar"><i data-lucide="school"></i></div>
+          <div><strong id="schoolLabel">My School</strong><small>Administrator</small></div>
+        </div>
+        <button class="nav-link" onclick="editSchool()"><i data-lucide="settings"></i> School Settings</button>
+        <button class="nav-link" onclick="exportData()"><i data-lucide="download"></i> Backup Data</button>
+        <label class="nav-link import-label"><i data-lucide="upload"></i> Restore Backup<input type="file" accept=".json" onchange="importData(event)" hidden></label>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" onclick="toggleSidebar()" aria-label="Toggle menu"><i data-lucide="menu"></i></button>
+        <div class="breadcrumb">School Management <span>/</span> <strong id="currentPage">Dashboard</strong></div>
+        <div class="top-actions">
+          <div class="today-chip"><i data-lucide="calendar-days"></i><span id="todayDate"></span></div>
+          <div class="admin-avatar">A</div>
+        </div>
+      </header>
+
+      <section class="content">
+        <div id="pageContent"></div>
+      </section>
+      <footer>EduManage <span>•</span> Student Management System <span>•</span> Local browser storage</footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+  <div id="modalRoot"></div>
+</body>
+</html>
